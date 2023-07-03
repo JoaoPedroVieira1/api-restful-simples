@@ -3,10 +3,10 @@
     class ProductController{
         private $conn;
 
-        public function __construct($conn){
+        public function __construct($conn){ // recebe conexão do banco de dados
             $this->conn=$conn;
         }
-        public function createProduct($data){
+        public function createProduct($data){ // insere um novo produto no banco de dados
             global $conn;
 
             $product_code = mysqli_real_escape_string($conn, $data->ProductCode);
@@ -39,7 +39,7 @@
 
             echo json_encode($output);
         }
-        public function getProduct($id){
+        public function getProduct($id){ // busca um produto no banco de dados de acordo com id fornecido
             global $conn;
 
             $id = mysqli_real_escape_string($conn, $id);
@@ -65,7 +65,7 @@
 
             echo json_encode($output);
         }
-        public function getAllProducts(){
+        public function getAllProducts(){ // busca todos os produtos no banco de dados
             global $conn;
 
             $query = "SELECT * FROM product";
@@ -84,7 +84,7 @@
 
             echo json_encode($output);
         }
-        public function updateProduct($id, $data){
+        public function updateProduct($id, $data){ // atualiza um produto existente de acordo com o ID fornecido
             global $conn;
 
             $id = mysqli_real_escape_string($conn, $id);
@@ -119,7 +119,7 @@
 
             echo json_encode($output);
         }
-        public function deleteProduct($id){
+        public function deleteProduct($id){ // deleta um produto do banco de dados de acordo com o ID fornecido
             global $conn;
 
             $id = mysqli_real_escape_string($conn, $id);
